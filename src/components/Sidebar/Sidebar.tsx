@@ -1,7 +1,7 @@
 import React from "react";
-
+import Input from "../Input/Input";
 export const Sidebar = () => (
   <div>
-    <h1>Sidebar</h1>
+    <Input />
   </div>
 );
