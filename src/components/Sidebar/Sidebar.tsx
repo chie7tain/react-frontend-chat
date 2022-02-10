@@ -1,7 +1,8 @@
 import React from "react";
 import Input from "../Input/Input";
+import { Wrapper } from "./Sidebar.styles";
 export const Sidebar = () => (
-  <div>
+  <Wrapper>
     <Input />
-  </div>
+  </Wrapper>
 );
