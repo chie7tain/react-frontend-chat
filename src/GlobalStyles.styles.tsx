@@ -10,10 +10,15 @@ export const GlobalStyle = createGlobalStyle`
 :root{
 --primary-grey:#F5FAFC;
 --primary-green:#128C7E;
+--primary-green-dark: hsl(125, 67%, 44%);
 --primary-white:#FFFFFF;
---text-grey:#7D7D7D
---input-grey:#9393C1
---border-radius: 14.1643px 0px 0px 14.1643px;
+--clr-black: #222;
+--text-grey:#7D7D7D;
+--input-grey:#9393C1;
+--borderRadius: 14.1643px 0px 0px 14.1643px;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
 }
   body{
     margin:0;

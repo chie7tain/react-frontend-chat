@@ -1,16 +1,9 @@
 import styled from "styled-components";
 
-export const BtnContainer = styled.div`
-  display: flex;
-  width: 30%;
-  margin: 20px 0;
-`;
-
-export const ChatCategoryBtn = styled.button`
+export const Btn = styled.button`
   background: var(--primary-green);
   color: var(--primary-white);
   border: none;
-  border-radius: var(--borderRadius);
   height: 50px;
   width: 100%;
   text-transform: uppercase;

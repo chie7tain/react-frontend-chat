@@ -1,6 +1,6 @@
 import Chat from "./components/Chat/Chat";
 // components
-import { Sidebar } from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { GlobalStyle } from "./GlobalStyles.styles";
 
 // styles
