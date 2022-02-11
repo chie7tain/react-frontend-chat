@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 --primary-green:#128C7E;
 --primary-green-dark: hsl(125, 67%, 44%);
 --primary-white:#FFFFFF;
---clr-black: #222;
+--primary-black: #222;
 --text-grey:#7D7D7D;
 --input-grey:#9393C1;
 --borderRadius: 14.1643px 0px 0px 14.1643px;
