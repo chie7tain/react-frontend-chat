@@ -19,36 +19,43 @@ const Input = () => {
           password: "123456789",
         });
 
-        const config = {
-          method: "post",
-          url: "http://127.0.0.1:3050/api/v1/user/login",
+        // const config: AxiosRequest= {
+        //   method: "post",
+        //   url: "http://127.0.0.1:3050/api/v1/user/login",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Cookie:
+        //       "connect.sid=s%3AtUvdI_13BB1JQ3fhR8YnyevIAk-_kp5t.4WBbQ55U1a0MAvUq6lu0KjtQ3kQDeVOYYeCcHvEcRCg",
+        //   },
+        //   data: data,
+        // };
+        let response = await axios({
+          method: "get",
+          url: "http://127.0.0.1:3050/api/v1/user/friends/favorite",
           headers: {
             "Content-Type": "application/json",
-            Cookie:
-              "connect.sid=s%3AtUvdI_13BB1JQ3fhR8YnyevIAk-_kp5t.4WBbQ55U1a0MAvUq6lu0KjtQ3kQDeVOYYeCcHvEcRCg",
+            Authorization:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjk3ZDc4OGE5OGRmMzhiYzk5ZGQ3MiIsImlhdCI6MTY0NDY3NjYwM30.8af0baFA8K76DyvsKph2it4MDC20SB770ziUcE1gADo",
           },
           data: data,
-        };
-
-        let response = await axios(config.url);
+        });
         // .then(function (response) {
         //   console.log(JSON.stringify(response.data));
         // })
         // .catch(function (error) {
         //   console.log(error);
         // });
+
         console.log(JSON.stringify(response.data));
         setChats(response.data);
         setLoading(false);
-      } catch (err) {
-        console.log(err);
+      } catch (err: any) {
+        console.log(err.response.data);
       }
     };
     fetchData();
   }, []);
   console.log(chat);
-
-
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("input");

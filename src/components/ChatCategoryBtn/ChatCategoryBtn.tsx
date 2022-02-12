@@ -7,8 +7,7 @@ interface ChatCategoryBtnProps {
 }
 
 const ChatCategoryBtn: React.FC<ChatCategoryBtnProps> = (props) => {
-  console.log(props);
-  return <Btn >{props.children}</Btn>;
+  return <Btn category={props.category}>{props.children}</Btn>;
 };
 
 export default ChatCategoryBtn;

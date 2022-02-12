@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 --text-grey:#7D7D7D;
 --input-grey:#9393C1;
 --borderRadius:4px ;
+--inputBorderRadius:23.6071px;
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;

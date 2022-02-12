@@ -6,8 +6,8 @@ export const Wrapper = styled.div`
   background-color: var(--primary-grey);
 `;
 export const StyledInput = styled.input`
-  width: 80%;
-  height: 40px;
-  border-radius: var(--border-radius);
+  width: 100%;
+  height: 45px;
+  border-radius: var(--inputBorderRadius);
   border: none;
 `;

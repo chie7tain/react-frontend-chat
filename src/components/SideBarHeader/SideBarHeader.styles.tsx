@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  border: 1px solid gold;
 `;
 export const DotsAvatatarStatus = styled.div`
   display: flex;
