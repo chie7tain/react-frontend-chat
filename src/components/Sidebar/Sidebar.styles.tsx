@@ -6,3 +6,5 @@ export const Wrapper = styled.div`
   display:flex;
   flex-direction:column;
 `;
+
+export const ComponentWrapper = styled.div``
