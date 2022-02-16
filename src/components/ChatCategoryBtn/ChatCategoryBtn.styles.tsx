@@ -32,7 +32,6 @@ export const Btn = styled.button<Props>`
     color: var(--primary-white);
   }
   opacity: 0.7;
-  ${({ active }) => active && `opacity:1`}/* &:active {
-    background-color:
-  } */
+  ${({ active }) => active && `opacity:1, background: var(--primary-green)`};
+  ${({ active }) => active && `background: var(--primary-light-green)`}
 `;

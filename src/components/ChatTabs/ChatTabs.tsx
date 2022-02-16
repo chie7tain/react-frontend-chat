@@ -6,6 +6,8 @@ const btnTypes = ["favorite", "friends", "groups"];
 
 const ChatTabs = () => {
   let [active, setActive] = useState(btnTypes[0]);
+  // use this to set the active state of the button and set the url to fetch data from the api
+  // onClick={(e) => console.log(e.target.innerHTML)}
 
   return (
     <BtnContainer>
