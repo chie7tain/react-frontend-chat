@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 type Props = {
+  active: boolean;
   category: string;
   children: React.ReactNode;
 };
@@ -30,7 +31,8 @@ export const Btn = styled.button<Props>`
     background: var(--primary-light-green);
     color: var(--primary-white);
   }
-  &:active {
-    background-color: var(--primary-green);
-  }
+  opacity: 0.7;
+  ${({ active }) => active && `opacity:1`}/* &:active {
+    background-color:
+  } */
 `;
