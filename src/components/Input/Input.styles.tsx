@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
 export const StyledInput = styled.input`
   width: 100%;
   height: 45px;
-  border-radius: var(--inputBorderRadius);
+  border-radius: var(--borderRadius);
   border: none;
+  text-indent: 20px;
 `;

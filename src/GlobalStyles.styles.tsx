@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
 
 :root{
 --primary-grey:#F5FAFC;
+--messageSection:#FAFAFA
 --primary-text-grey:#829C99;
 --primary-green:#128C7E;
 --primary-light-green: hsl(125, 67%, 44%);
@@ -18,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 --text-grey:#7D7D7D;
 --input-grey:#9393C1;
 --borderRadius:4px ;
---inputBorderRadius:23.6071px;
+--inputBorderRadius:20.6071px;
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;

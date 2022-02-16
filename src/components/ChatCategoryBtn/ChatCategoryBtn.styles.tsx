@@ -6,23 +6,15 @@ type Props = {
 };
 
 export const Btn = styled.button<Props>`
-  background: ${(props) =>
-    props.category === "favorite"
-      ? "var(--primary-green)"
-      : "var(--primary-grey)"};
-  color: ${(props) =>
-    props.category === "favorite"
-      ? "var(--primary-white)"
-      : "var(--primary-text-grey)"};
+  color: var(--primary-text-grey);
   border: none;
   width: 100%;
-  height: 45.21px;
+  height: 40px;
   text-transform: uppercase;
-  letter-spacing: var(--spacing);
-  display: inline-block;
+  letter-spacing: 3px;
+  /* display: inline-block; */
   transition: var(--transition);
   font-size: 0.7rem;
-  font-weight:bold;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: ${(props) =>
@@ -33,4 +25,12 @@ export const Btn = styled.button<Props>`
       : props.category === "groups"
       ? "0px 14.1643px 14.1643px 0px"
       : "0px"};
+  outline: none;
+  &:hover {
+    background: var(--primary-light-green);
+    color: var(--primary-white);
+  }
+  &:active {
+    background-color: var(--primary-green);
+  }
 `;

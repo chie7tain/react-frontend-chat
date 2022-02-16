@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  display: flex;
   width: 100%;
-  background-color: var(--primary-grey);
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
 `;

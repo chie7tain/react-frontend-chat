@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 30%;
+  /* width: 30%; */
   padding: 20px 10px;
   display: flex;
   flex-direction: column;
-  border: 1px solid green;
+  background-color: var(--primary-grey);
 `;
 
 export const ComponentWrapper = styled.div``;

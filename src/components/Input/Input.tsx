@@ -10,7 +10,6 @@ const Input = () => {
   const [chat, setChats] = useState([]);
   const [value, setValue] = useState("");
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,8 +31,8 @@ const Input = () => {
           },
           data: data,
         };
-        let friendsUrl =  'http://127.0.0.1:3050/api/v1/users/user/friends';
-        let groupsUrl = ""
+        let friendsUrl = "http://127.0.0.1:3050/api/v1/users/user/friends";
+        let groupsUrl = "";
         let response = await axios(config);
         let { accessToken } = response.data;
         console.log(accessToken);
@@ -69,7 +68,7 @@ const Input = () => {
       <StyledInput
         onChange={(e) => handleInput(e)}
         type="text"
-        placeholder="Type a message..."
+        placeholder="Search or start new chat"
       />
     </Wrapper>
   );
