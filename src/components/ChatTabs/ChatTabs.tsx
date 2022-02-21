@@ -4,7 +4,7 @@ import ChatCategoryBtn from "../ChatCategoryBtn/ChatCategoryBtn";
 
 const btnTypes = ["favorite", "friends", "groups"];
 
-const ChatTabs = () => {
+const ChatTabs = ({ setChatType }) => {
   let [active, setActive] = useState(btnTypes[0]);
   // use this to set the active state of the button and set the url to fetch data from the api
   // onClick={(e) => console.log(e.target.innerHTML)}
@@ -20,7 +20,8 @@ const ChatTabs = () => {
             active={active === btnType}
             category={btnType}
             key={index}
-            onClick={() => setActive(btnType)}
+            setActive={setActive}
+            setChatType={setChatType}
           >
             {btnType}
           </ChatCategoryBtn>

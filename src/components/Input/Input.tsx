@@ -3,13 +3,18 @@ import axios from "axios";
 
 import { Wrapper, StyledInput } from "./Input.styles";
 
-const Input = () => {
+// interface for Props
+interface Props {
+  setChatType: (chatType: string) => void;
+}
+
+const Input: React.FC<Props> = (props: any) => {
   const textInputRef = useRef<HTMLInputElement>(null);
   // determine when to stop the fetching of data
   const [loading, setLoading] = useState(false);
   const [chat, setChats] = useState([]);
   const [value, setValue] = useState("");
-
+  console.log(props);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,9 +64,9 @@ const Input = () => {
   console.log(chat);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("input");
-    console.log(e.target.value);
-    const searchText = textInputRef.current!.value;
+    // console.log("input");
+    // console.log(e.target.value);
+    // const searchText = textInputRef.current!.value;
   };
   return (
     <Wrapper>
