@@ -1,10 +1,10 @@
 import React from "react";
 import { Wrapper } from "./Chat.styles";
-import Input from "../Input/Input";
+import { StyledInput } from "../Input/Input.styles";
 
-const Chat = () => (
+const Chat: React.FC = () => (
   <Wrapper>
-    <Input />
+    <StyledInput />
   </Wrapper>
 );
 

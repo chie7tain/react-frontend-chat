@@ -4,19 +4,19 @@ import { Btn } from "./ChatCategoryBtn.styles";
 interface ChatCategoryBtnProps {
   active: boolean;
   category: string;
-  onClick: (e: any) => any;
   children: React.ReactNode;
-  setChatType: (e: any) => any;
+  setChatType: (e: any) => void;
 }
 
-const ChatCategoryBtn: React.FC<ChatCategoryBtnProps> = (props) => {
+const ChatCategoryBtn: React.FC<ChatCategoryBtnProps> = ({
+  category,
+  active,
+  children,
+  setChatType,
+}) => {
   return (
-    <Btn
-      active={props.active}
-      category={props.category}
-      onClick={props.onClick}
-    >
-      {props.children}
+    <Btn active={active} category={category} onClick={setChatType}>
+      {children}
     </Btn>
   );
 };

@@ -5,17 +5,28 @@ import Input from "../Input/Input";
 import SideBarHeader from "../SideBarHeader/SideBarHeader";
 import { Wrapper, ComponentWrapper } from "./Sidebar.styles";
 
-interface Props {
-  setChatType: (e: any) => any;
-}
-const Sidebar: React.FC<Props> = () => {
-  // let [active, setActive] = useState(btnTypes[0]);
+// interface Props {
+//   setChatType: (e: any) => any;
+// }
+const Sidebar: React.FC = () => {
+  const btnTypes = ["favorite", "friends", "groups"];
+  const [active, setActive] = useState(btnTypes[0]);
+
+  const [chatType, setChatType] = useState("favorite");
+  const [chatData, setChatData] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [chatDataFav, setChatDataFav] = useState([]);
+  const [chatDataFriends, setChatDataFriends] = useState([]);
+  const [chatDataGroups, setChatDataGroups] = useState([]);
+
   let [chat, setChat] = useState("");
-  // use this to set the active state of the button and set the url to fetch data from the api
-  // onClick={(e) => console.log(e.target.innerHTML)}
   const setChatHandler = (e: any) => {
     console.log(e.target.innerHTML);
     setChat(e.target.innerHTML);
+  };
+  const setActiveHandler = (e: any) => {
+    setActive(e.target.innerHTML);
+    setChatType(e.target.innerHTML);
   };
   return (
     // sidebar
@@ -32,7 +43,12 @@ const Sidebar: React.FC<Props> = () => {
       {/* end of the search input field container */}
       {/* chat tabs button for the various chats */}
       <ComponentWrapper>
-        <ChatTabs setChatType={setChatHandler} />
+        <ChatTabs
+          setChatType={setActiveHandler}
+          btnTypes={btnTypes}
+          active={active}
+          category={chatType}
+        />
       </ComponentWrapper>
       {/* end of the tabs button container */}
       {/* chat tiles for the various chats */}
