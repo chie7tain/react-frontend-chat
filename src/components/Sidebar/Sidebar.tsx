@@ -13,13 +13,8 @@ import { Wrapper, ComponentWrapper } from "./Sidebar.styles";
 const Sidebar: React.FC = () => {
   const btnTypes = ["favorite", "friends", "groups"];
   const [active, setActive] = useState(btnTypes[0]);
-
+const [searchTerm,setSearchTerm] = useState("");;
   const [chatType, setChatType] = useState("favorite");
-  const [chatData, setChatData] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [chatDataFav, setChatDataFav] = useState([]);
-  const [chatDataFriends, setChatDataFriends] = useState([]);
-  const [chatDataGroups, setChatDataGroups] = useState([]);
 
   const setActiveHandler = (e: any) => {
     setActive(e.target.innerHTML);
@@ -46,8 +41,8 @@ const Sidebar: React.FC = () => {
         url: "http://127.0.0.1:3050/api/v1/user/login",
         headers: {
           "Content-Type": "application/json",
-          Cookie:
-            "connect.sid=s%3A4Dm6v_E25FI_WfWA587CeK08BD1cPiDP.4Da%2FP5EJla6JufXJZ5hVVUhp1qI1lJauXq6HT%2B8tJ1E",
+          // Cookie:
+          //   "connect.sid=s%3A4Dm6v_E25FI_WfWA587CeK08BD1cPiDP.4Da%2FP5EJla6JufXJZ5hVVUhp1qI1lJauXq6HT%2B8tJ1E",
         },
         data: authdata,
       };
@@ -56,7 +51,7 @@ const Sidebar: React.FC = () => {
         url += `users/friends/${category}`;
       } else if (category === "groups") {
         url += category;
-      } else {
+      } else if (category === "friends") {
         url += `users/${category}`;
       }
       let response = await axios(config);
@@ -67,39 +62,53 @@ const Sidebar: React.FC = () => {
         url: url,
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          Cookie:
-            "connect.sid=s%3AM3oAXCWrsMzHbcvZjNCebbZqsE2icTvX.TlZUBHIvRujgMAvQ225ahFLZ%2F5262KJj1nOtzEcM8ZE",
+          // Cookie:
+          //   "connect.sid=s%3AM3oAXCWrsMzHbcvZjNCebbZqsE2icTvX.TlZUBHIvRujgMAvQ225ahFLZ%2F5262KJj1nOtzEcM8ZE",
         },
       };
 
-      let data = await (await axios(dataConfig)).data;
-      console.log(url);
+      let { data: chatData } = await (await axios(dataConfig)).data;
+      console.log(url, chatData);
 
-      let chatData = data.data.data;
-      console.log(chatData);
-      if (chatData > 0) {
+      if (chatData.length > 0) {
         let friends = chatData.map((chat: any) => chat.friendId);
         if (category === "favorite") {
           setChats(chatData);
         } else if (category === "friends") {
           setChats(friends);
+          console.log(chatData);
         } else {
+          console.log(chatData);
           setChats(chatData);
         }
       } else {
+        console.log("no data");
+        setChats([]);
       }
 
       setLoading(false);
     } catch (err: any) {
+      console.log(err);
       setError(err);
-      console.log(err.response.data);
     }
-  }, [category]);
+  }, [category,]);
 
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-  console.log(chats);
+  const handleSearch = (e: any) => {
+    console.log(e.target.value);
+    let searchTerm = e.target.value;
+    // filter the chats based on the search term take account of spaces between words
+    let filteredChats = chats.filter((chat: any) => {
+      return (
+        chat.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        chat.lastName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+    console.log(filteredChats);
+    setChats(filteredChats);
+  };
   return (
     // sidebar
     <Wrapper>
@@ -110,7 +119,7 @@ const Sidebar: React.FC = () => {
       {/* end of the sidebarHeader */}
       {/* the search input field for the search */}
       <ComponentWrapper>
-        <Input />
+        <Input handleSearch={handleSearch} />
       </ComponentWrapper>
       {/* end of the search input field container */}
       {/* chat tabs button for the various chats */}
@@ -125,8 +134,8 @@ const Sidebar: React.FC = () => {
       {/* end of the tabs button container */}
       {/* chat tiles for the various chats */}
       <ComponentWrapper>
-         {
-                  chats.map((chat: any) => {
+        {chats.length > 0 ? (
+          chats.map((chat: any) => {
             return (
               <ChatTile
                 key={chat.id}
@@ -135,13 +144,12 @@ const Sidebar: React.FC = () => {
                 category={chatType}
                 image={chat.avatar}
                 id={chat.id}
-                // lastMessage={chat.lastMessage}
-                // time={chat.time}
               />
             );
           })
-        }
-        {/* <ChatTile firstName={firstName} lastName={lastName} image={image} /> */}
+        ) : (
+          <div>no chats found</div>
+        )}
       </ComponentWrapper>
       {/* end of tils for the various chats */}
     </Wrapper>

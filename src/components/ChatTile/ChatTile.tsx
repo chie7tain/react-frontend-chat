@@ -13,22 +13,14 @@ import {
 } from "./ChatTile.styles";
 
 interface ChatTileProps {
-
-    firstName: string;
-    lastName: string;
-    image: string;
-    id: string;
-    category: string;
-    // lastMessage: string;
-    // time: string;
-
-    // chatType: string;
-    // unreadCount: number;
-
+  firstName: string;
+  lastName: string;
+  image: string;
+  id: string;
+  category: string;
 }
 // src="https://res.cloudinary.com/chie7tain/image/upload/v1643416214/obauglrjdyiog5q1ndn4.png"
 const ChatTile: React.FC<ChatTileProps> = ({ firstName, lastName, image }) => {
-
   return (
     <Wrapper>
       <ImageNameMessageContainer>

@@ -2,12 +2,17 @@ import React, { useRef, useState, useEffect } from "react";
 
 import { Wrapper, StyledInput } from "./Input.styles";
 
-const Input: React.FC = () => {
+interface Props {
+  handleSearch: (e: any) => any;
+}
+
+const Input: React.FC<Props> = ({ handleSearch }) => {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {};
   return (
     <Wrapper>
       <StyledInput
-        onChange={handleInput}
+        onChange={handleSearch}
+        // value={}
         type="text"
         placeholder="Search or start new chat"
       />
