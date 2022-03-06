@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-
+import { Div } from "./BookList.styles";
 class BookList extends Component {
   render() {
     return (
-      <div>
+      <Div>
         <h1>Book List</h1>
         <ul>
           <li>The Alchemist</li>
           <li>The Alchemist</li>
           <li>The Alchemist</li>
         </ul>
-      </div>
+      </Div>
     );
   }
 }
