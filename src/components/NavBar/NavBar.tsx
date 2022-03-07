@@ -7,12 +7,12 @@ class NavBar extends Component {
     const { isLightTheme, light, dark } = this.context;
     const theme = isLightTheme ? light : dark;
     return (
-      <Nav style={{ background: theme.bg, color: theme.syntax }}>
+      <Nav style={{ background: theme.ui, color: theme.syntax }}>
         <h1>Context App</h1>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li style={{ background: theme.ui }}>Home</li>
+          <li style={{ background: theme.ui }}>About</li>
+          <li style={{ background: theme.ui }}>Contact</li>
         </ul>
       </Nav>
     );

@@ -10,7 +10,7 @@ export const Div = styled.div`
 
     li {
       padding: 10px;
-      margin: 0 auto;
+      margin: 5px auto;
       border-radius: 10px;
     }
   }
