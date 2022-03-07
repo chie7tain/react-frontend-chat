@@ -8,12 +8,15 @@ import { GlobalStyle } from "./GlobalStyles.styles";
 import { Wrapper } from "./App.styles";
 import NavBar from "./components/NavBar/NavBar";
 import BookList from "./components/BookList/BookList";
+import ThemeContextProvider from "./contexts/ThemeContext";
 function App() {
   return (
     <Wrapper>
       <GlobalStyle />
-      <NavBar />
-      <BookList />
+      <ThemeContextProvider>
+        <NavBar />
+        <BookList />
+      </ThemeContextProvider>
       {/* <Sidebar />
       <Chat /> */}
     </Wrapper>
