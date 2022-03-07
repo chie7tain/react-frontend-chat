@@ -1,4 +1,5 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 import { Button } from "../ThemeToggle/ThemeToggle.styles";
 import NewSongForm from "../NewSongForm/NewSongForm";
 import { Div } from "./SongList.styles";
@@ -13,12 +14,23 @@ const SongList = () => {
   const addSongHandler = (title: string) => {
     setSongs([...songs, { title, id: songs.length + 1 }]);
   };
-
+  useEffect(() => {
+    console.log("oppsy");
+  }, [songs]);
+  const { isLightTheme, light, dark } = useContext(ThemeContext);
+  const theme = isLightTheme ? light : dark;
   return (
-    <Div>
+    <Div style={{ background: theme.bg, color: theme.syntax }}>
       <ul>
         {songs.map((song) => {
-          return <li key={song.id}>{song.title}</li>;
+          return (
+            <li
+              style={{ background: theme.bg, color: theme.syntax }}
+              key={song.id}
+            >
+              {song.title}
+            </li>
+          );
         })}
       </ul>
       <NewSongForm addSongHandler={addSongHandler} />
