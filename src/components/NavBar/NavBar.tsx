@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import { Nav } from "./NavBar.styles";
+import { Button } from "../ThemeToggle/ThemeToggle.styles";
 // using contextType = ThemeContext
 // class NavBar extends Component {
 //   static contextType = ThemeContext;
+
 //   render() {
+//     console.log(this.context.theme);
 //     const { isLightTheme, light, dark } = this.context;
 //     const theme = isLightTheme ? light : dark;
 //     return (
@@ -23,22 +27,39 @@ import { Nav } from "./NavBar.styles";
 class NavBar extends Component {
   render() {
     return (
-      <ThemeContext.Consumer>
+      <AuthContext.Consumer>
         {(context) => {
-          const { isLightTheme, light, dark } = context;
-          const theme = isLightTheme ? light : dark;
+          const { isAuthenticated, toggleAuth } = context;
           return (
-            <Nav style={{ background: theme.ui, color: theme.syntax }}>
-              <h1>Context App</h1>
-              <ul>
-                <li style={{ background: theme.ui }}>Home</li>
-                <li style={{ background: theme.ui }}>About</li>
-                <li style={{ background: theme.ui }}>Contact</li>
-              </ul>
-            </Nav>
+            <ThemeContext.Consumer>
+              {(context) => {
+                const { isLightTheme, light, dark } = context;
+                const theme = isLightTheme ? light : dark;
+                return (
+                  <Nav style={{ background: theme.ui, color: theme.syntax }}>
+                    <h1>Context App</h1>
+                    <div>
+                      {isAuthenticated ? (
+                        <p>You are logged in</p>
+                      ) : (
+                        <p>You are not logged in</p>
+                      )}
+                    </div>
+                    <Button onClick={toggleAuth}>
+                      {isAuthenticated ? "Log out" : "Login"}
+                    </Button>
+                    <ul>
+                      <li style={{ background: theme.ui }}>Home</li>
+                      <li style={{ background: theme.ui }}>About</li>
+                      <li style={{ background: theme.ui }}>Contact</li>
+                    </ul>
+                  </Nav>
+                );
+              }}
+            </ThemeContext.Consumer>
           );
         }}
-      </ThemeContext.Consumer>
+      </AuthContext.Consumer>
     );
   }
 }

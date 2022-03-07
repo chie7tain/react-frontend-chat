@@ -10,14 +10,17 @@ import NavBar from "./components/NavBar/NavBar";
 import BookList from "./components/BookList/BookList";
 import ThemeContextProvider from "./contexts/ThemeContext";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle";
+import AuthContextProvider from "./contexts/AuthContext";
 function App() {
   return (
     <Wrapper>
       <GlobalStyle />
       <ThemeContextProvider>
-        <NavBar />
-        <BookList />
-        <ThemeToggle />
+        <AuthContextProvider>
+          <NavBar />
+          <BookList />
+          <ThemeToggle />
+        </AuthContextProvider>
       </ThemeContextProvider>
       {/* <Sidebar />
       <Chat /> */}
