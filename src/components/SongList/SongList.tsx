@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Button } from "../ThemeToggle/ThemeToggle.styles";
-
+import NewSongForm from "../NewSongForm/NewSongForm";
 import { Div } from "./SongList.styles";
 
 const SongList = () => {
@@ -10,8 +10,8 @@ const SongList = () => {
     { title: "why me", id: 3 },
     { title: "forever", id: 4 },
   ]);
-  const addSongHandler = (e: any) => {
-    setSongs([...songs, { title: e.target.value, id: 5 }]);
+  const addSongHandler = (title: string) => {
+    setSongs([...songs, { title, id: songs.length + 1 }]);
   };
 
   return (
@@ -21,7 +21,7 @@ const SongList = () => {
           return <li key={song.id}>{song.title}</li>;
         })}
       </ul>
-      <Button onClick={addSongHandler}>Add a Song</Button>
+      <NewSongForm addSongHandler={addSongHandler} />
     </Div>
   );
 };
